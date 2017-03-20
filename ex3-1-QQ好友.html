@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="gb2312">
+	<title>QQ好友管理</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#list{width:150px;margin: 20px auto;border:1px solid #121212;}
+		#list {list-style: none;border-bottom: 1px solid black;}
+		#list h2{background: #ece5e7;text-align: center;
+			background-image: url(images/ex4-1/ico-close.gif);
+			background-repeat:no-repeat;
+			vertical-align: middle;
+			background-size:20px 20px;
+			background-position: 5px 5px;
+		}
+		#list ul {display: none;}
+		#list ul li{list-style: none;text-align: center;line-height:24px; border-bottom:1px solid #333;  }
+		 #list li  .active { background: #feeec7;text-align: center;
+			background-image: url(images/ex4-1/ico-open.gif);
+			background-repeat:no-repeat;
+			 vertical-align: middle;
+			background-size:20px 20px;
+			 background-position: 5px 5px;
+		}
+#list  ul .hover{
+	background: #fbaa21;
+}
+
+	</style>
+	<script>
+			window.onload=function(){
+					var oUl=document.getElementById('list');
+					var aH2=oUl.getElementsByTagName('h2');
+					var aUl=oUl.getElementsByTagName('ul');
+					var aLi=null;
+					var arrLi=[];
+					for(var i=0;i<aH2.length;i++){
+					    aH2[i].index=i;
+					    aH2[i].onclick=function(){
+							if(this.className==''){
+							    aUl[this.index].style.display='block';
+							   this.className='active';
+							  ///  alert(aUl[this.index].className);
+							}
+							else{
+                                aUl[this.index].style.display='none';
+                                this.className='';
+							}
+                            for( var i=0; i<aH2.length; i++ ){
+                                if( i != this.index ){
+                                    aUl[i].style.display = 'none';
+                                    aH2[i].className = '';
+                                }
+                            }
+
+                        };
+					}
+
+                for( var i=0; i<aUl.length; i++ ){
+
+                    aLi = aUl[i].getElementsByTagName('li');
+                    for( var j=0; j<aLi.length; j++ ){
+                        arrLi.push( aLi[j] );
+
+                    }
+                }
+
+                for( var i=0; i<arrLi.length; i++ ){
+                    arrLi[i].onclick = function (){
+
+                        for( var i=0; i<arrLi.length; i++ ){
+                            if( arrLi[i] !=this ){
+                                arrLi[i].className = '';
+                            }
+                        }
+                        if( this.className == '' ){
+                            this.className = 'hover';
+                        }else{
+                            this.className = '';
+                        }
+                    };
+                }
+
+
+            };
+
+
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li class="cate">
+			<h2>我的好友</h2>
+			<ul>
+				<li>张三</li>
+				<li>李四</li>
+				<li>王武</li>
+				<li>张龙</li>
+				<li>赵虎</li>
+			</ul>
+		</li>
+		<li class="cate">
+			<h2>小学同学</h2>
+			<ul>
+				<li>赵二</li>
+				<li>张一</li>
+				<li>刘三</li>
+				<li>王无</li>
+			</ul>
+		</li>
+		<li class="cate">
+			<h2>大学同学</h2>
+			<ul>
+				<li>张小三</li>
+				<li>刘小为</li>
+				<li>李晓</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

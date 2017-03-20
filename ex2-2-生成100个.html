@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>生成100个li</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#create{margin-left:300px;margin-top:30px;width:200px;height:40px;line-height: 40px;font-size: 20px;border:1px solid gray;display: block;text-align: center;text-decoration: none;color:black;}
+		a:hover{background: gray;}
+		#content{width:600px;}
+		li{width:50px;height:50px;border:1px solid #121212;margin-top:10px;margin-left: 5px;float: left;list-style: none;text-align: center;line-height: 50px;}
+	</style>
+	<script>
+		window.onload=function(){
+			var create=document.getElementById('create');
+			var content=document.getElementById('content');
+			var cssarr=['background:red;','background:green;','background:blue;','background:black;','background:red;','background:blue;','background:gray;','background:white;','background:red;','background:green;'];
+			var oLi=document.getElementsByTagName('li');
+			var onOff=true;
+			create.onclick=function(){
+				if(onOff){
+					for (var i = 0; i<100; i++) {
+						content.innerHTML+='<li>'+i+'</li>';
+						num=Math.ceil(Math.random()*9);
+						oLi[i].style.cssText=cssarr[num];
+					}
+				}
+				onOff=false;
+				
+			};
+		};
+	</script>
+</head>
+<body>
+	<a href="#" id="create">生成100个li</a>
+	<div id="content"></div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>商品合计</title>
+    <style>
+            #list{
+                margin: 0;
+                padding: 0;
+                font-size: 18px;
+            }
+        #list li{list-style: none;height:40px;}
+    </style>
+    <script>
+            window.onload=function(){
+                var oUl=document.getElementById('list');
+                var aLi=oUl.getElementsByTagName('li');
+                var oP=document.getElementsByTagName('p')[0];
+                var  all=document.getElementById('all');
+                 var onOff=false;
+                 //改变数量
+                for(var i=0;i<aLi.length;i++){
+                    Compute(aLi[i]);
+                }
+                function Compute(oLi) {
+                    var aInput = oLi.getElementsByTagName('input');
+                    var oStrong = oLi.getElementsByTagName('strong')[0];
+                    var oEm = oLi.getElementsByTagName('em')[0];
+                    var oSpan = oLi.getElementsByTagName('span')[0];
+                    var count = parseInt(oStrong.innerHTML);
+                    var single = parseFloat(oEm.innerHTML);
+                    aInput[0].onclick = function () {
+                        if (count > 0) {
+                            count--;
+                            oStrong.innerHTML = count;
+                            oSpan.innerHTML = (count * single).toFixed(2) + '&yen';
+                        }
+                        onOff=true;
+                    };
+                    aInput[1].onclick = function () {
+                        onOff=true;
+                        count++;
+                        oStrong.innerHTML = count;
+                        oSpan.innerHTML = (count * single).toFixed(2) + '&yen';
+                    };
+                }
+                //合计
+                all.onclick=function(){
+                    var countArr=[];
+                    var singleArr=[];
+                    var allArr=[];
+                    var num=0;
+                    var allM=0;
+                    var max=0;
+                    if(onOff){
+                        for(var i=0;i<aLi.length;i++){
+                            var oStrong = aLi[i].getElementsByTagName('strong')[0];
+                            var oEm = aLi[i].getElementsByTagName('em')[0];
+                            var oSpan = aLi[i].getElementsByTagName('span')[0];
+                            var count = parseInt(oStrong.innerHTML);
+                            var single = parseFloat(oEm.innerHTML);
+                            var tall=parseFloat(parseFloat(oSpan.innerHTML).toFixed(2));
+                            if(count>0){
+                                countArr.push(count);
+                                singleArr.push(single);
+                                allArr.push(tall);
+                             }
+                        }
+                        max=singleArr[0];
+                        //求和、计件
+                        for(var j=0;j<countArr.length;j++){
+                            num+=countArr[j];
+                            allM=allArr[j]+allM;
+                        }
+                        //求最大单价
+                        for(var k=1;k<singleArr.length;k++){
+                            if(singleArr[k]>max){
+                                max=singleArr[k];
+                            }
+                       }
+                       max=typeof(max)=='undefined'?0:max;
+                       oP.innerHTML='商品合计共：'+num+'件，共花费了：'+allM.toFixed(2)+'元<br />' +
+                           '其中最贵的商品单价是：'+max+'元';
+                    }
+                   onOff=false;
+                };
+            };
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>8.5&yen;</em>
+        小计：<span>0&yen;</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>12.5&yen;</em>
+        小计：<span>0&yen;</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>18.9&yen;</em>
+        小计：<span>0&yen;</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>4.3&yen;</em>
+        小计：<span>0&yen;</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>2.5&yen;</em>
+        小计：<span>0&yen;</span>
+    </li>
+</ul>
+<input type="button" value="合计" id="all"/>
+<p></p>
+</body>
+</html>

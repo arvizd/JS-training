@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多组图片切换</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        #main{position: relative;top:30px;left:100px;width:852px;height:400px;}
+        #prev ,#next{border: 1px solid #befcff;width:60px;height:20px;line-height: 20px;text-align: center;display: inline-block}
+        #next{margin-left:30px;}
+        #main .active{border:1px solid #0bff96;}
+        #first{width:500px;height:400px;border: 1px solid #ff95e4;position: absolute;top:30px;}
+        #first img{width:480px;height:300px;position: absolute;left:10px;top:20px;}
+        #first p,#second p{height:30px;line-height: 30px;text-align:center;position: absolute;top:330px;width:100%;}
+        #first span,#second span{height:30px;line-height: 30px;text-align: center;position: absolute;top:360px;}
+        #second{width:300px;height:400px;border: 1px solid #ff95e4;position: absolute;top:30px;left:550px;}
+        #second img{width:280px;height:300px;position: absolute;left:10px;top:20px;}
+        #second p{}
+        #second span{}
+    </style>
+    <script>
+        window.onload=function(){
+
+            var prev=document.getElementById('prev');
+            var next=document.getElementById('next');
+            var oDiv1=document.getElementById('first');
+            var oImg1=oDiv1.getElementsByTagName('img')[0];
+            var oP1=oDiv1.getElementsByTagName('p')[0];
+            var oSpan1=oDiv1.getElementsByTagName('span')[0];
+            var imgArr1=['images/ex3-3/1.jpg','images/ex3-3/2.jpg','images/ex3-3/3.jpg','images/ex3-3/4.jpg','images/ex3-3/5.jpg','images/ex3-3/6.jpg' ];
+            var num=0;
+            var oDiv2=document.getElementById('second');
+            var oImg2=oDiv2.getElementsByTagName('img')[0];
+            var oP2=oDiv2.getElementsByTagName('p')[0];
+            var oSpan2=oDiv2.getElementsByTagName('span')[0];
+            var imgArr2=['images/ex3-3/1.png','images/ex3-3/2.png','images/ex3-3/3.png','images/ex3-3/4.png' ];
+            var num1=0;
+
+            function init(){
+                oImg1.src=imgArr1[num];
+                oP1.innerHTML='第一组第'+(num+1)+'张';
+                oSpan1.innerHTML=num+1+'/'+imgArr1.length;
+            }
+            init();
+            function init1(){
+                oImg2.src=imgArr2[num1];
+                oP2.innerHTML='第二组第'+(num1+1)+'张';
+                oSpan2.innerHTML=num1+1+'/'+imgArr2.length;
+            }
+            init1();
+            oImg2.onclick=function(){
+                next.className='';
+                prev.className='';
+                num1++;
+                if(num1>imgArr2.length-1){
+                    num1=0;
+                }
+                init1();
+            };
+            oImg1.onclick=function(){
+                next.className='';
+                prev.className='';
+                num++;
+                if(num>imgArr1.length-1){
+                    num=0;
+                }
+                init();
+            };
+            prev.onclick=function(){
+                next.className='';
+                this.className='active';
+                num--;
+                num1--;
+                if(num<0){
+                    num=imgArr1.length-1;
+                }
+                init();
+                if(num1<0){
+                    num1=imgArr2.length-1;
+                }
+                init1()
+            };
+            next.onclick=function(){
+                prev.className='';
+                this.className='active';
+                num++;
+                if(num>imgArr1.length-1){
+                    num=0;
+                }
+                init();
+                num1++;
+                if(num1>imgArr2.length-1){
+                    num1=0;
+                }
+                init1();
+            };
+        };
+
+
+    </script>
+</head>
+<body>
+    <div id="main">
+        <a id="prev">上一组</a>
+        <a id="next">下一组</a>
+        <div id="first">
+            <img src="" alt="">
+            <p>文字正在加载中。。。</p>
+            <span>数量正在计算中。。。</span>
+        </div>
+        <div id="second">
+            <img src="" alt="">
+            <p>文字正在加载中。。。</p>
+            <span>数量正在计算中。。。</span>
+        </div>
+    </div>
+
+</body>
+</html>

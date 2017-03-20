@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>带缩略图的图片切换</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#slider{
+			width:720px;
+			height:600px;
+			position: relative;
+			/*top:30px;*/
+			left:300px;
+			background:  url(images/ex3-2/bg.jpg) 0 0 no-repeat;
+		}
+		#slider p{
+			height:30px;
+			line-height:30px;
+			text-align: center;
+			font-size: 25px;
+			color:#fdffe5;
+			margin-top: 10px;
+		}
+		#prev,#next{width:50px;height:50px;filter:alpha(opacity:30);opacity: 0.3;font-size: 40px;position: absolute;top:255px;display: block;line-height: 50px;border: 1px solid #121212;text-align: center;}
+		#prev{left:20px;}
+		#next{left:648px;}
+		a:hover{background: #121121;opacity: 1;color:white;}
+		#slider img{
+			width:680px;
+			height:510px;
+			//position: absolute;
+			margin-left:20px;
+		}
+		#slider ul{position: absolute;top:560px;left:280px;}
+		#slider li{width:10px;height:10px;border: 1px solid black;float: left;margin-right: 20px;list-style: none;}
+		#slider div{width:70px;height:50px;position: absolute;top:-50px;display: none;}
+		#slider .active{
+			background:#19ff1c;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+            var oDiv=document.getElementById('slider');
+            var prev=oDiv.getElementsByTagName('a')[0];
+            var next=oDiv.getElementsByTagName('a')[1];
+            var aLi=oDiv.getElementsByTagName('li');
+            var aDiv=oDiv.getElementsByTagName('div');
+			var oImg=oDiv.getElementsByTagName('img')[0];
+            var oUl=oDiv.getElementsByTagName('ul')[0];
+            var imgUrl=['images/ex3-2/1.jpg','images/ex3-2/2.jpg','images/ex3-2/3.jpg','images/ex3-2/4.jpg','images/ex3-2/5.jpg','images/ex3-2/6.jpg'];
+            var num=0;
+            for(var i=0;i<imgUrl.length;i++){
+                oUl.innerHTML+='<li></li>';
+                aLi[i].innerHTML='<div></div>';
+                aDiv[i].style.background='url('+imgUrl[i]+') no-repeat'	;
+                aDiv[i].style.left=30*(i-1)+(2*i+1)+'px';
+            }
+             for(var j=0;j<aLi.length;j++){
+                aLi[j].index=j;
+                aLi[j].onmouseover=function(){
+                    this.getElementsByTagName('div')[0].style.display = 'block';
+                };
+                aLi[j].onmouseout=function(){
+                    this.getElementsByTagName('div')[0].style.display = 'none';
+                };
+                aLi[j].onclick=function(){
+                    num=this.index;
+                    init();
+                };
+                prev.onclick=function(){
+                    num--;
+                    if(num<0){
+                        num=imgUrl.length-1;
+					}
+
+					init();
+				};
+                next.onclick=function(){
+                    num++;
+                    if(num>imgUrl.length-1){
+                        num=0;
+                    }
+
+                    init();
+                };
+            }
+          	//初始化
+            function init(){
+                oImg.src=imgUrl[num];
+                for(var i=0;i<imgUrl.length;i++){
+                    aLi[i].className='';
+                }
+                aLi[num].className='active';
+            }
+            init();
+		};
+
+	</script>
+</head>
+<body>
+	<div id="slider">
+		<p>带缩略图的图片切换</p>
+		<a id="prev">&lt;</a>
+		<a id="next">&gt;</a>
+		<img  alt="">
+		<ul>
+
+		</ul>
+	</div>
+</body>
+</html>

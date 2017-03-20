@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>自动生成Vbase</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#create{margin-left:300px;margin-top:30px;width:200px;height:40px;line-height: 40px;font-size: 20px;border:1px solid gray;display: block;text-align: center;text-decoration: none;color:black;}
+		a:hover{background: gray;}
+		#content{width:600px;position: relative;}
+		li{width:50px;height:50px;border:1px solid #121212;list-style: none;position: absolute;
+			background: #ff0a22;text-align: center;
+			line-height:50px;
+			font-size:30px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var create=document.getElementById('create');
+			var content=document.getElementById('content');
+			var oLi=document.getElementsByTagName('li');
+			//var onOff=true;
+			var count=0;
+            //alert(mr);
+			//var oLi=document.getElementsByTagName('li');
+			create.onclick=function(){
+
+
+                if(count==4){
+                    count=0;
+                }
+
+				if(count==0){
+                    content.innerHTML='';
+				    c0();
+				}
+				else if(count==1){
+                    content.innerHTML='';
+				    c1();
+				}
+				else if(count==2){
+                    content.innerHTML='';
+				    c2();
+				}
+				else{
+                    content.innerHTML='';
+				    c3();
+				}
+
+                count++;
+
+			};
+			function c0(){
+                //if(onOff){
+                    for (var j = 0; j<5; j++) {
+                        content.innerHTML+='<li>'+j+'</li>';
+
+                   // }
+                    for( var i=0; i<oLi.length; i++ ){
+                        if(i>Math.floor(oLi.length/2)){
+                            oLi[i].style.left = 10 + i*50 + 'px';
+                            oLi[i].style.top = 10 + Math.abs(1+i-oLi.length)*50 + 'px';
+                        }
+                        else{
+                            oLi[i].style.left = 10 + i*50 + 'px';
+                            oLi[i].style.top = 10 + i*50 + 'px';
+                        }
+                    }
+                }
+                ///onOff=false;
+			}
+			function  c1(){
+              //  if(onOff){
+                    for (var j= 0; j<5; j++) {
+                        content.innerHTML+='<li>'+j+'</li>';
+                //    }
+                    for( var i=0; i<oLi.length; i++ ){
+                        if(i>Math.floor(oLi.length/2)){
+                            oLi[i].style.left = 10 + i*50 + 'px';
+                            oLi[i].style.top = 250- Math.abs(1+i-oLi.length)*50 + 'px';
+                        }
+                        else{
+                            oLi[i].style.left = 10 + i*50 + 'px';
+                            oLi[i].style.top = 250- i*50 + 'px';
+                        }
+                    }
+                }
+              //  onOff=false;
+			}
+			function c2(){
+               // if(onOff){
+                    for (var j = 0; j<5; j++) {
+                        content.innerHTML+='<li>'+j+'</li>';
+
+                    //}
+                    for( var i=0; i<oLi.length; i++ ){
+                        if(i>Math.floor(oLi.length/2)){
+                            oLi[i].style.left = 10+Math.abs(1+i-oLi.length)*50 + 'px';
+                            ///   oLi[i].style.top = 10+Math.abs(1+i-oLi.length)*50 + 'px';
+                            oLi[i].style.top = 10+ i*50 + 'px';
+                        }
+                        else{
+                            oLi[i].style.left = 10 + i*50 + 'px';
+                            oLi[i].style.top = 10+ i*50 + 'px';
+                        }
+                    }
+                }
+              ///  onOff=false;
+			}
+			function c3(){
+            //    if(onOff){
+                    for (var j = 0; j<5; j++) {
+                        content.innerHTML+='<li>'+j+'</li>';
+
+                   // }
+                    for( var i=0; i<oLi.length; i++ ){
+                        if(i>Math.floor(oLi.length/2)){
+                            oLi[i].style.left = 250-Math.abs(1+i-oLi.length)*50 + 'px';
+                            ///   oLi[i].style.top = 10+Math.abs(1+i-oLi.length)*50 + 'px';
+                            oLi[i].style.top = 10+ i*50 + 'px';
+                        }
+                        else{
+                            oLi[i].style.left = 250- i*50 + 'px';
+                            oLi[i].style.top = 10+ i*50 + 'px';
+                        }
+                    }
+                }
+               /// onOff=false;
+			}
+		};
+	</script>
+</head>
+<body>
+	<a href="#" id="create">自动生成一个V</a>
+	<div id="content"></div>
+</body>
+</html>

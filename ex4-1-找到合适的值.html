@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script>
+
+var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+var newArr=[];
+var max=null;
+//alert(parseFloat(0));
+/*
+	1、找到arr里所有的数字：-98765, 34, -2, 0, 5
+	2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5 
+	3、把转成数字以后，最大值判断出来：300
+	4、把 NaN 所在的位置找出来：1 14 17  19
+*/
+
+for(var i=0;i<arr.length;i++) {
+
+//alert (parseFloat(arr[i])) ;
+//alert(arr[i]);
+    //1
+//    if(typeof(arr[i])=='number'){
+//        //alert(arr[i]);
+//        if(!isNaN(arr[i])){
+//           alert(arr[i]);
+//        }
+//     }
+//    2
+//    if ( parseFloat(arr[i]) || parseFloat(arr[i])==0 ) {
+//        alert(arr[i]);
+//    }
+    //3
+//
+
+//         if ( parseFloat(arr[i]) || parseFloat(arr[i])==0 ) {
+////            alert(parseFloat(arr[i]));
+//           //  alert(1);
+//           newArr.push(parseFloat(arr[i]));
+//
+//
+//     }
+//
+//}
+    //4
+    if(typeof(arr[i])=='number'){
+        //alert(arr[i]);
+        if(isNaN(arr[i])){
+            alert(i);
+           //alert(arr[i]);
+        }
+     }
+
+}
+//alert(isNaN(null));
+
+//max=newArr[0];
+//
+//for(var j=1;j<newArr.length;j++){
+////    alert(newArr[j]);
+//////    for(var k=0;)
+//    if(newArr[j]>max){
+//        max=newArr[j];
+//
+//    }
+//}
+//alert(max);
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this应用提示</title>
+    <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            ul{
+                    width:500px;
+                    height:500px;
+                    border: 1px solid #ff082d;
+                    padding: 30px;
+                    margin:20px auto;
+            }
+       li{
+           position: relative;
+           float: left;
+           list-style: none;
+
+        }
+        li img{
+                width:80px;
+                height:80px;
+        }
+        div{
+                width:80px;
+                height:120px;
+                display: none;
+                position: absolute;
+                top:70px;
+                left:0px;
+            border: 1px solid #49ff19;
+            background: #ffe745;
+            z-index: 99999;
+        }
+    </style>
+    <script>
+            window.onload=function(){
+                    var  oLi=document.getElementsByTagName('li');
+                    for(i=0;i<oLi.length;i++){
+                        oLi[i].onmouseover=function(){
+                            this.getElementsByTagName('div')[0].style.display = 'block';
+                        };
+                        oLi[i].onmouseout=function(){
+                            this.getElementsByTagName('div')[0].style.display = 'none';
+                        };
+                    }
+            };
+
+         //// /es/ex3-5/first.png','images/ex3-5/second.png','images/ex3-5/third.png','images/ex3-5/fourth.png','images/ex3-5/five.png','images/ex3-5/sixt.png','images/ex3-5/seven.png','images/ex3-5/eight.png','images/ex3-5/nine.png','images/ex3-5/ten.png',];
+    </script>
+</head>
+<body>
+<p id="main">
+    <ul>
+        <li>
+            <img src="images/ex2-4/first.png" alt=""/>
+           <div>
+                    开发商垫付斯蒂芬斯蒂芬第三方非斯蒂芬斯蒂芬董事会董事
+            </div>
+        </li>
+        <li>
+            <img src="images/ex2-4/second.png" alt=""/>
+            <div>
+                       房贷首付多少反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复吩咐
+            </div>
+        </li>
+        <li>
+            <img src="images/ex2-4/third.png" alt=""/>
+            <div>
+                        上的点点滴滴点点滴滴答滴答滴答滴答滴答滴答滴答滴答滴答滴答滴
+            </div>
+        </li>
+        <li>
+            <img src="images/ex2-4/fourth.png" alt=""/>
+            <div>
+                               答滴答滴答滴答滴答滴答滴答滴答滴答滴答滴答滴答滴答滴
+            </div>
+        </li>
+        <li>
+            <img src="images/ex2-4/five.png" alt=""/>
+            <div>
+                         滴答滴答滴答滴答滴答滴答滴答滴答生生世世生生世世事实上
+            </div>
+        </li>
+        <li>
+            <img src="images/ex2-4/six.png" alt=""/>
+            <div>
+                        的撒娇的撒
+            </div>
+        </li>
+        <li>
+            <img src="images/ex2-4/seven.png" alt=""/>
+            <div>
+                       大三大四大撒旦撒旦撒旦撒大赛的撒的
+            </div>
+        </li>
+        <li>
+            <img src="images/ex2-4/eight.png" alt=""/>
+            <div>
+                            答滴答滴答滴答洒洒水的撒的撒的
+            </div>
+         </li>
+        <li>
+            <img src="images/ex2-4/nine.png" alt=""/>
+            <div>
+                            大三大四的武契切维奇的轻微的武器
+            </div>
+        </li>
+            <li>
+                <img src="images/ex2-4/ten.png" alt=""/>
+                <div>
+                            的撒大撒旦撒旦撒旦撒大赛
+                </div>
+        </li>
+    </ul>
+</p>
+</body>
+</html>

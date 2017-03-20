@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>课后练习1</title>
+</head>
+<style>
+	*{margin: 0;padding: 0;}
+	#main{position: relative;width:500px;height:500px;border: 1px solid #123121;}
+	#set{border: 1px solid #f1f1f1;height:40px;line-height: 40px;text-align: center;background:#000;color:#fff; font-size: 20px;}
+	#cont{width:100px;height:50px;border: 1px solid gray;margin:0 auto;}
+	.content{width:50px;height:50px;border: 1px solid gray;background: #fff;}
+	#select{position: absolute;top:0;left:500px;width:260px;border:1px solid black;display:none;}
+</style>
+<script>
+	window.onload=function(){
+		var set=document.getElementById("set");
+		var cont=document.getElementById("cont");
+		var select=document.getElementById("select");
+		var main=document.getElementById("main");
+		var oInput=document.getElementsByTagName('input');
+		var recovery=document.getElementById("recovery");
+		set.onclick=function(){
+			select.style.display="block";
+			main.style.cssText="filter:alpha(opacity:30);opacity:0.3;"
+		};
+		oInput[10].onclick=function(){
+			select.style.display="none";
+            main.style.cssText="filter:alpha(opacity:100);opacity:1;"
+		};
+		recovery.onclick=function(){
+			cont.style.width="50px";
+			cont.style.height="50px";
+			cont.style.border="1xp solid black";
+			cont.style.background="#fff";
+		};
+		oInput[0].onclick=function(){
+			cont.style.background="red";
+		};
+		oInput[1].onclick=function(){
+			cont.style.background="green";
+		};
+		oInput[2].onclick=function(){
+			cont.style.background="blue";
+		};
+		oInput[3].onclick=function(){
+			cont.style.width=oInput[3].value+'px';
+		};
+		oInput[4].onclick=function(){
+			cont.style.width=oInput[4].value+'px';
+		};
+		oInput[5].onclick=function(){
+			cont.style.width=oInput[5].value+'px';
+		};
+		oInput[6].onclick=function(){
+			cont.style.height=oInput[6].value+'px';
+		};
+		oInput[7].onclick=function(){
+			cont.style.height=oInput[7].value+'px';
+		};
+		oInput[8].onclick=function(){
+			cont.style.height=oInput[8].value+'px';
+		};
+	};
+</script>
+<body>
+	<div id="main">
+		<p id="set">点击设置样式</p>
+		<div id="cont"></div>
+	</div>
+	<div id="select">
+			<p>选择背景颜色</p>
+			<input type="button" value="红色" id="red" />
+			<input type="button" value="绿色" id="green"/>
+			<input type="button" value="蓝色" id="blue"/>
+			<p>选择宽度</p>
+			<input type="button" value="100" id="w1"/>
+			<input type="button" value="200" id="w2"/>
+			<input type="button" value="400" id="w3"/>
+			<p>选择高度</p>
+			<input type="button" value="100" id="h1"/>
+			<input type="button" value="200" id="h2"/>
+			<input type="button" value="400" id="h3"/>
+			<br/>
+			<br/>
+			<input type="button" value="恢复" id="recovery"/>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="确定" id="sure"/>
+		</div>
+</body>
+</html>
